@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import top.iu1314.calculation.databinding.FragmentQuestionBinding
@@ -13,22 +14,25 @@ import top.iu1314.calculation.databinding.FragmentQuestionBinding
 class QuestionFragment : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_question, container, false)
-        val myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
+//        val myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
+        val myViewModel = ViewModelProvider(
+            requireActivity(),
+            SavedStateViewModelFactory(requireActivity().application, requireActivity())
+        ).get(
+            MyViewModel::class.java
+        )
         myViewModel.generator()
+        myViewModel.currentScore.value = 0
         val binding: FragmentQuestionBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_question, container, false)
         binding.data = myViewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = requireActivity()
         val builder: StringBuilder = StringBuilder()
         val listener = View.OnClickListener {
             when (it.id) {
@@ -64,6 +68,7 @@ class QuestionFragment : Fragment() {
 
 
         binding.buttonSubmit.setOnClickListener { v ->
+            if (builder.isEmpty()) builder.append("-1")
             if (builder.toString().toInt() == myViewModel.answer.value) {
                 myViewModel.answerCorrect()
                 builder.setLength(0)
@@ -72,7 +77,6 @@ class QuestionFragment : Fragment() {
                 if (myViewModel.winFlag) {
                     Navigation.findNavController(v)
                         .navigate(R.id.action_questionFragment_to_winFragment)
-                    //                        应该错误才保存吧
                     myViewModel.winFlag = false
                     myViewModel.save()
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import top.iu1314.calculation.databinding.FragmentWinBinding
@@ -21,7 +22,11 @@ class WinFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
+//        val myViewModel = ViewModelProvider(this)[MyViewModel::class.java]
+        val myViewModel = ViewModelProvider(
+            requireActivity(),
+            SavedStateViewModelFactory(requireActivity().application, requireActivity())
+        )[MyViewModel::class.java]
         val binding: FragmentWinBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_win, container, false)
         binding.data = myViewModel
