@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Calculation</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="title_message">Calculation</string>
+    <string name="title_image_info" translatable="false">title_image</string>
+    <string name="title_button_info">Enter</string>
+    <string name="high_score_message">High Score:%d</string>
+    <string name="button0" translatable="false">0</string>
+    <string name="button1" translatable="false">1</string>
+    <string name="button2" translatable="false">2</string>
+    <string name="button3" translatable="false">3</string>
+    <string name="button4" translatable="false">4</string>
+    <string name="button5" translatable="false">5</string>
+    <string name="button6" translatable="false">6</string>
+    <string name="button7" translatable="false">7</string>
+    <string name="button8" translatable="false">8</string>
+    <string name="button9" translatable="false">9</string>
+    <string name="button_clear">clear</string>
+    <string name="button_submit">submit</string>
+    <string name="button_back_to_title">back</string>
+    <string name="equal_symbol" translatable="false">=</string>
+    <string name="question_mark" translatable="false">\?</string>
+    <string name="current_score">Current Score:%d</string>
+    <string name="input_indicator">Your Answer:</string>
+    <string name="lose_image_info" translatable="false">lose image</string>
+    <string name="win_image_info" translatable="false">win image</string>
+    <string name="lose_info">You Lose!</string>
+    <string name="lose_score_info">Your Score:%d</string>
+    <string name="win_score_info">New Record:%d</string>
+    <string name="win_info">You Win!</string>
+    <string name="answer_Correct_message">Correct!Go On!</string>
+    <string name="quit_dialog_title">Are you sure to quit?!</string>
+    <string name="quit_dialog_positive_message">OK</string>
+    <string name="quit_dialog_negative_message">CANCEL</string>
+    <string name="title_Nav">Welcome</string>
+    <string name="question_Nav">Testing</string>
+    <string name="win_Nav">Win</string>
+    <string name="lose_Nav">Lose</string>
+</resources>
