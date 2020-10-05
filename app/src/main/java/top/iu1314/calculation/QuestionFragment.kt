@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.SavedStateViewModelFactory
@@ -68,7 +69,10 @@ class QuestionFragment : Fragment() {
 
 
         binding.buttonSubmit.setOnClickListener { v ->
-            if (builder.isEmpty()) builder.append("-1")
+            if (builder.isEmpty()) {
+                Toast.makeText(context, R.string.question_no_answer, Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if (builder.toString().toInt() == myViewModel.answer.value) {
                 myViewModel.answerCorrect()
                 builder.setLength(0)

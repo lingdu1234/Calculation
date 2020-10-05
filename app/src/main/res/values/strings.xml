@@ -37,4 +37,5 @@
     <string name="question_Nav">Testing</string>
     <string name="win_Nav">Win</string>
     <string name="lose_Nav">Lose</string>
+    <string name="question_no_answer">You have not answer this question!</string>
 </resources>
