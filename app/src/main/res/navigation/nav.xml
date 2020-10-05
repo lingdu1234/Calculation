@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_title">
         <action
             android:id="@+id/action_titleFragment_to_questionFragment"
-            app:destination="@id/questionFragment" />
+            app:destination="@id/questionFragment" >
+            <argument
+                android:name="initCurrentScore"
+                android:defaultValue="0" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/questionFragment"
@@ -24,6 +28,10 @@
         <action
             android:id="@+id/action_questionFragment_to_winFragment"
             app:destination="@id/winFragment" />
+        <argument
+            android:name="initCurrentScore"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/loseFragment"

@@ -29,11 +29,13 @@ class QuestionFragment : Fragment() {
             MyViewModel::class.java
         )
         myViewModel.generator()
-        myViewModel.currentScore.value = 0
+//        myViewModel.currentScore.value = 0
+//       利用 Fragment 进去的action传值，问题回答正确时，将当前分数赋值给action的arguments 修复旋转导致的分数重置
+        myViewModel.currentScore.value = arguments?.getInt("initCurrentScore")?:0
         val binding: FragmentQuestionBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_question, container, false)
         binding.data = myViewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this  // binding.lifecycleOwner = requireActivity()
         val builder: StringBuilder = StringBuilder()
         val listener = View.OnClickListener {
             when (it.id) {
@@ -77,6 +79,8 @@ class QuestionFragment : Fragment() {
                 myViewModel.answerCorrect()
                 builder.setLength(0)
                 binding.textView9.text = getString(R.string.answer_Correct_message)
+                arguments?.putInt("initCurrentScore", myViewModel.currentScore.value!!)
+
             } else {
                 if (myViewModel.winFlag) {
                     Navigation.findNavController(v)
