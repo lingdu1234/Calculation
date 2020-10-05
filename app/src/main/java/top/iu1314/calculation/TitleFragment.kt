@@ -28,7 +28,7 @@ class TitleFragment : Fragment() {
         val binding: FragmentTitleBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
         binding.data = myViewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         binding.button.setOnClickListener(View.OnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_titleFragment_to_questionFragment)
         })

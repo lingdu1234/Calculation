@@ -26,7 +26,7 @@ class LoseFragment : Fragment() {
         val binding: FragmentLoseBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_lose, container, false)
         binding.data = myViewModel
-        binding.lifecycleOwner = requireActivity()
+        binding.lifecycleOwner = this
         binding.button11.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_loseFragment_to_titleFragment))
 //        return inflater.inflate(R.layout.fragment_win, container, false)
         return binding.root
